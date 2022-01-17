@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const state = useSelector(state => state.cartReducer)
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -48,7 +50,7 @@ function Navbar() {
               </button>
               <Link to="/cart">
                 <button className="btn btn-outline-success ms-2">
-                  Cart (0)
+                  Cart ({state.length})
                 </button>
               </Link>
             </form>
