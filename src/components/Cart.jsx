@@ -29,20 +29,31 @@ function Cart() {
           <h3 className="lead fw-bold">
             {cart.qty} × {Math.round(cart.price)} = {total}
           </h3>
-          <button className="btn btn-dark" onClick={() => delProduct(...state)}>-</button>
-          <button className=" btn btn-dark ms-2" onClick={() => addProduct(...state)}>+</button>
+          <button className="btn btn-dark" onClick={() => delProduct(...state)}>
+            -
+          </button>
+          <button
+            className=" btn btn-dark ms-2"
+            onClick={() => addProduct(...state)}
+          >
+            +
+          </button>
         </div>
       </div>
     );
   };
   return (
     <div>
-      {state?.map((cart) => (
-        <div className="container">
-          <Cart cart={cart} />
-          <hr />
-        </div>
-      ))}
+      {state.length !== 0 ? (
+        state.map((cart) => (
+          <div className="container">
+            <Cart cart={cart} />
+            <hr />
+          </div>
+        ))
+      ) : (
+        <h1 className="text-center m-5">Cart is Empty</h1>
+      )}
     </div>
   );
 }
